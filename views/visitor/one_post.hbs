@@ -1,0 +1,166 @@
+<style>
+
+
+.chat-online {
+    color: #34ce57
+}
+
+.chat-offline {
+    color: #e4606d
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+</style>
+
+<div class="collection text-center mt-5">
+
+  <div>
+    <h2>{{post.describtion}}</h2>
+    <p>Article by:
+      {{post.username}}, was published in:
+      {{day}}/{{month}}/{{year}}</p>
+  </div>
+  <div>
+    <img
+      src="/post_images/{{post.photo}}"
+      width="1000px"
+      height="500px"
+      alt="error"
+    />
+    <div
+      class="mt-5 container"
+      style="font-size: 18px; text-align: justify; text-justify: inter-word;"
+    >
+      {{post.details}}
+    </div>
+  </div>
+
+<input type="text" id="from" value="{{from}}" class="w-75 d-none" />
+<input type="text" id="post" value="{{post.id}}" class="w-75 d-none" />
+<input type="text" id="name" value="{{username}}" class="w-75 d-none" />
+<main class="content">
+    <div class="container p-0">
+
+		<h1 class="h3 mb-3">Comments</h1>
+
+		<div class="card">
+			<div class="row g-0">
+		
+
+
+					<hr class="d-block d-lg-none mt-1 mb-0">
+				</div>
+				<div >
+					<div class="py-2 px-4 border-bottom d-none d-lg-block">
+
+					</div>
+
+					<div class="position-relative">
+						<div class="chat-messages p-4 " id="Big-box">
+							{{#if comments}}
+							{{#each comments }}
+							<div class="chat-message-left pb-4">
+								{{#if this.photo}}
+																<div>
+									<img src="/uploaded_images/{{this.photo}}" class="rounded-circle mr-1" width="40" height="40">
+								</div>
+									
+								{{/if}}
+
+								<div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+									<div class="font-weight-bold mb-1">{{this.username}}</div>
+									{{this.details}}
+								</div>
+							</div>
+								
+							{{/each}}
+								
+							{{/if}}
+
+
+                    </div>
+							
+
+                    {{#if user}}
+                    <div class="flex-grow-0 py-3 px-4 border-top">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="userComment" placeholder="Type your comment">
+                            <button class="btn btn-primary" id="send" type="submit" onclick="send()">Send</button>
+                        </div>
+                    </div>
+                    {{/if}}
+
+
+				
+			
+		</div>
+	</div>
+</main>
+
+    <script src="../../socket.io/socket.io.js"></script>
+    <script>
+        const socket = window.io();
+        var box=document.getElementById("Big-box");
+        function send(){
+            var comment=document.getElementById('userComment').value;
+            document.getElementById('userComment').value="";
+            var from=document.getElementById("from").value;
+            var post=document.getElementById("post").value;
+            var name=document.getElementById("name").value;
+            var photo=document.getElementById("photos").src;
+            console.log(photo);
+			var date=new Date()
+			
+
+            socket.emit('user-comment', { comment:comment,from:from,post:post,username:name,userpic:photo ,hour:date.getHours(),minutes:date.getMinutes()})
+
+        }
+		        socket.on('server-comment', data => {
+                console.log(data.message);
+                 			box.innerHTML += `<div class="chat-message-left pb-4">
+								<div>
+									<img src="${data.userpic}" class="rounded-circle mr-1"  width="40" height="40">
+								</div>
+								<div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+									<div class="font-weight-bold mb-1">${data.username}</div>
+									${data.comment}
+								</div>
+							</div>`
+             })
+
+
+    </script>

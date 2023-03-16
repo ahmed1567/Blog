@@ -1,0 +1,29 @@
+<style>
+  body { font-family: "Roboto", sans-serif; background:#002134; } .circle-wrap {
+  margin: 150px auto; width: 180px; height: 180px; background: #fefcff;
+  border-radius: 50%; border: 3px solid #af5d0b; }
+</style>
+
+<div class="circle-wrap">
+  <div class="circle text-center">
+    <h3 class="mt-5 fw-bold">{{users}}</h3>
+    <h4 class="fw-bold">User</h4>
+
+  </div>
+</div>
+<div class="circle-wrap" style="margin-top: -50px;">
+  <div class="circle text-center">
+    <h3 class="mt-5 fw-bold" id="visits"></h3>
+    <h4 class="fw-bold">Views</h4>
+
+  </div>
+</div>
+<div class="circle-wrap" style="margin-top: -50px;">
+  <div class="circle text-center">
+    <h3 class="mt-5 fw-bold">{{posts}}</h3>
+    <h4 class="fw-bold">Blog</h4>
+
+  </div>
+</div>
+
+<script src="../js/count.js"></script>

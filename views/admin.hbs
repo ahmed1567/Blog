@@ -1,0 +1,70 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <title>{{label}}</title>
+  </head>
+  <body class="back">
+    <h2>number of users:{{users.users}}</h2>
+     <h2>this site has been visited <span id="visits"> </span></h2>
+    <div style="margin-top: -100px;" >
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-75">
+          <div
+            class="row d-flex justify-content-center align-items-center h-75"
+          >
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">Offer New Car</h2>
+                  <form action="/admin" method="Post">
+                    <label class="form-label" for="form3Example1cg">Brand Name</label>
+                    <div class="form-outline mb-4">
+                      <input name="brand" type="text" id="brand" list="types" name="brand" class="form-control form-control-lg" required/>
+                        <datalist id="types"  >
+                            
+                        </datalist>
+                    </div>
+                    <label class="form-label" for="forample1cg">Company Name</label>
+                    <div class="form-outline mb-4">
+                      <input name="company" type="text" id="forample1cg" class="form-control form-control-lg"required/>
+                    </div>
+                    <label class="form-label" for="fample1cg">Contact Number</label>
+                    <div class="form-outline mb-4">
+                      <input name="phone" type="text" id="fample1cg" class="form-control form-control-lg"required/>
+                    </div>
+                    <label class="form-label" for="form3ample1cg">Your Offer Price</label>
+                    <div class="form-outline mb-4">
+                      <input name="price" type="text" id="form3ample1cg" class="form-control form-control-lg"required/>
+                    </div>
+                    <label class="form-label" for="form3Example3cg">Car details</label>
+                    <div class="form-outline mb-4">
+                      <textarea name="details" type="text" id="form3Example3cg"class="form-control form-control-lg" rows="6" cols="70" maxlength="250"required/></textarea>
+                    </div>
+                    <label class="form-label" for="form3Example3cg">Year</label>
+                    <div class="form-outline">
+                      <input name="year" type="text" id="form3Example3cg"class="form-control form-control-lg" required/>
+                    </div>
+                    </div>
+                    {{#if exp}}
+                      <p class="text-center text-muted mb-2 ">{{exp}}</p>
+                    {{/if}}
+                    <div class="d-flex justify-content-center mb-2">
+                      <input name="send" type="submit" value="Send"class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"/>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+<script src="../js/brands.js"></script>
+<script src="../js/count.js"></script>
+  </body>
+</html>

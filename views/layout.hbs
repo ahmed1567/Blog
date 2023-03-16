@@ -1,0 +1,200 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../public/css/post.css" />
+    {{#ifnoteq user "admin"}}
+        <script async src="https://api.countapi.xyz/hit/cars.com/1870680f-0598-4e26-bca7-6dbd5553d69f?callback=websiteVisits"></script>
+    {{/ifnoteq}}    
+    <title>{{title}}</title>
+
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Navbar brand -->
+             <a class="navbar-brand mt-2 mt-lg-0 " href="/">
+            <span class="fw-bold fs-2 text-primary">
+              B
+            </span>
+          </a>
+
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            {{#ifEquals user "Basic"}}
+            <li class="nav-item">
+              <a class="nav-link" href="/operation/">Premium</a>
+            </li>
+            {{/ifEquals}}
+
+            <li class="nav-item">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="/operation/search/?cat=Political">Political</a>
+                <a class="dropdown-item" href="/operation/search/?cat=Health">Health</a>
+                <a class="dropdown-item" href="/operation/search/?cat=Sports">Sports</a>
+                <a class="dropdown-item" href="/operation/search/?cat=Movies">Movies</a>
+                <a class="dropdown-item" href="/operation/search/?cat=Books">Books</a>
+              </div>
+            {{#ifEquals user "admin"}}
+            <li class="nav-item">
+              <a class="nav-link" href="/users/post">Add Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/operation/all">All Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/operation/status">Status</a>
+            </li>
+            {{/ifEquals}}
+            {{#ifEquals user "Premium"}}
+            <li class="nav-item">
+              <a class="nav-link" href="/users/post">Add Post</a>
+            </li>
+            {{/ifEquals}}
+              {{#unless user}}
+              <li class="nav-item " style="margin-left: 1400px;">
+                <a class="nav-link fs-6 fw-bold" href="/sign_up">Sign Up</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link fs-6 fw-bold" href="/sign_in">Sign In</a>
+              </li>
+            </li>
+
+
+            {{/unless}}
+
+          </ul>
+          <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+          <!-- Icon -->
+
+
+          {{! <!-- Notifications -->
+          <div class="dropdown">
+            <a
+              class="text-reset me-3 dropdown-toggle hidden-arrow"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              role="button"
+              data-mdb-toggle="dropdown"
+              
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-bell"></i>
+              <span
+                class="badge rounded-pill badge-notification bg-danger"
+              >1</span>
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end "
+              
+              aria-labelledby="navbarDropdownMenuLink"
+              
+            >
+            
+              <li>
+                <a class="dropdown-item" href="#">Another news</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </div> }}
+          <!-- Avatar -->
+          {{#if user}}
+            
+          
+          <div class="dropdown">
+            <a
+              class="dropdown-toggle d-flex align-items-center hidden-arrow"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+              style="margin-right: 95px;"
+            >
+              <img
+                id="photos"
+                src="/uploaded_images/{{pic}}"
+                class="rounded-circle"
+                height="45"
+              />
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/users/setting">My profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/users/setting">Settings</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/sign_out">Logout</a>
+              </li>
+            </ul>
+          </div>
+          {{/if}}
+
+        </div>
+        <!-- Right elements -->
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+            {{#ifEquals user "Basic"}}
+                 <h5 style="  text-align: justify; text-align-last: right;margin-right:70px">{{user}} Member</h5>
+            {{/ifEquals}}
+            {{#ifEquals user "Premium"}}
+                 <h5 style="  text-align: justify; text-align-last: right;margin-right:60px">{{user}} Member</h5>
+            {{/ifEquals}}
+
+    {{{body}}}
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+  </body>
+</html>

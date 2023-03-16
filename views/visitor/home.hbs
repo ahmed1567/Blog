@@ -1,0 +1,230 @@
+<style>
+  .tags { list-style: none; margin: 0; overflow: hidden; padding: 0; } .tags li
+  { float: left; } .tag { background: #eee; border-radius: 3px 0 0 3px; color:
+  #999; display: inline-block; height: 26px; line-height: 26px; padding: 0 20px
+  0 23px; position: relative; margin: 0 10px 10px 0; text-decoration: none;
+  -webkit-transition: color 0.2s; } .tag::before { background: #fff;
+  border-radius: 10px; box-shadow: inset 0 1px rgba(0, 0, 0, 0.25); content: '';
+  height: 6px; left: 10px; position: absolute; width: 6px; top: 10px; }
+  .tag::after { background: #fff; border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee; border-top: 13px solid transparent; content: '';
+  position: absolute; right: 0; top: 0; } .tag:hover { background-color:
+  crimson; color: white; } .tag:hover::after { border-left-color: crimson; }
+</style>
+
+<h1 class="text-center mt-4" style="visibility:hidden">Blog</h1>
+<!-- cards -->
+{{#ifEquals user "admin"}}
+  <div class="d-flex flex-wrap container justify-content-between mt-5">
+
+    {{#each blogs}}
+      <div class="card mt-4 mb-4" style="width: 18rem;">
+        <a href="/one/?post={{this.id}}"><img
+            src="/post_images/{{this.photo}}"
+            class="card-img-top hq"
+            alt="Sunset Over the Sea"
+          /></a>
+        <div class="card-body">
+          <a
+            href="/one/?post={{this.id}}"
+            class="text-decoration-none text-dark"
+          >
+            <p class="card-text">{{this.describtion}}</p>
+          </a>
+
+        </div>
+        <ul class="tags">
+          <li><a
+              href="/operation/search/?cat={{this.category}}"
+              class="tag"
+            >{{this.category}}</a></li>
+          <li><a href="/" class="tag">Home</a></li>
+          <a href="/operation/remove/?post={{this.id}}"><h4>
+
+              <i
+                class="fa fa-trash"
+                style="margin-left: 60px;"
+                aria-hidden="true"
+              ></i></h4></a>
+
+        </ul>
+      </div>
+
+    {{/each}}
+
+  </div>
+
+{{/ifEquals}}
+
+{{#ifnoteq user "admin"}}
+  <div class="d-flex flex-wrap container justify-content-between mt-5">
+
+    {{#each blogs}}
+      <div class="card mt-4 mb-4" style="width: 18rem;">
+        <a href="/one/?post={{this.id}}"><img
+            src="/post_images/{{this.photo}}"
+            class="card-img-top hq"
+            alt="Sunset Over the Sea"
+          /></a>
+        <div class="card-body">
+          <a
+            href="/one/?post={{this.id}}"
+            class="text-decoration-none text-dark"
+          >
+            <p class="card-text">{{this.describtion}}</p>
+          </a>
+
+        </div>
+        <ul class="tags">
+          <li><a
+              href="/operation/search/?cat={{this.category}}"
+              class="tag"
+            >{{this.category}}</a></li>
+          <li><a href="/" class="tag">Home</a></li>
+
+        </ul>
+      </div>
+
+    {{/each}}
+
+  </div>
+
+{{/ifnoteq}}
+
+{{#unless blogs}}
+  <h1 class="text-center" style="margin-top:100px ; opacity:50%">
+    <i>There are no blogs at the moment</i>
+  </h1>
+  <div style="margin-top:180px ;"></div>
+
+{{/unless}}
+<div class="text-center mt-5">
+  {{#ifEquals user "Premium"}}
+    <a
+      href="mailto:ahmed@gmail.com"
+      class="fs-3 text-decoration-none fw-bold align-center"
+    ><i>Contact Admin</i> </a>
+  {{/ifEquals}}
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<footer class="text-center text-lg-start bg-light text-muted">
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fa fa-instagram"></i>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/mariamnouro/"
+        class="me-4 text-reset"
+        target="_blank"
+      >
+        <i class="fa fa-linkedin"></i>
+      </a>
+      <a
+        href="https://github.com/MohamedBessar"
+        class="me-4 text-reset"
+        target="_blank"
+      >
+        <i class="fa fa-github"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h4
+            class="text-uppercase fw-bold mb-4 text-primary"
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+          >
+            <i class="fas fa-gem me-3"></i>BLOG
+          </h4>
+          <b>
+            Here you can keep yourself in touch with your favorite influencers.
+          </b>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            About
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Team</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Developers</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Investors</a>
+          </p>
+
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful Blogs
+          </h6>
+          <p>
+            <a
+              class="text-reset"
+              href="/operation/search/?cat=Health"
+            >Health</a>
+
+          </p>
+          <p>
+            <a class="text-reset" href="/operation/search/?cat=Books">Books</a>
+          </p>
+          <p>
+            <a
+              class="text-reset"
+              href="/operation/search/?cat=Political"
+            >Political</a>
+
+          </p>
+
+          <p>
+            <a
+              class="text-reset"
+              href="/operation/search/?cat=Sports"
+            >Sports</a>
+          </p>
+        </div>
+
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fa fa-home me-3"></i>Tanta, Egypt</p>
+          <p>
+            <i class="fa fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fa fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fa fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright: 7ankasha team. All rights reserved
+
+  </div>
+</footer>

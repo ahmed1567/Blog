@@ -1,0 +1,65 @@
+<div  style="margin-top: 200px;">
+<div class="w-50 m-auto ">
+
+<div class="row">
+
+    <div class="well well-sm">
+        <form action="/users/post" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="form3Example1cg">Post Category</label>
+                        <input name="category" type="text" id="brand" list="types" name="brand" class="form-control form-control-lg" required/>
+                        <datalist id="types"  >
+                                    <option value="Political">
+                                    <option value="Health">
+                                    <option value="Sports">
+                                    <option value="Books">
+                                    <option value="Movies">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label mt-2" for="form3Example3cg">Describtion</label>
+                        <textarea name="describtion" type="text" id="form3Example3cg"class="form-control form-control-lg" rows="2" cols="70" maxlength="250"required/></textarea>
+                    </div>
+                    <div class="form-group">
+                            <label class="form-label mt-2" for="form3Example4">Your Post Image</label>
+                            <input
+                            type="file"
+                            name="photo"
+                            id="form3Example4"
+                            class="form-control"
+                            required
+                            />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name" class="mb-1">
+                            Details</label>
+                        <textarea name="details" id="message" class="form-control" rows="9" cols="25" required="required"
+                            placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary pull-right mt-3" id="btnContactUs">
+                        Add</button>
+                </div>
+            </div>
+        </form>
+
+
+</div>
+
+</div>
+
+</div>
+{{#if exp}}
+  <p class="text-center text-muted mt-5 mb-0">{{exp}}</p>
+{{/if}}
+
+
+
+
+
+

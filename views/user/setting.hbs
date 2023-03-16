@@ -1,0 +1,101 @@
+<style>
+    body {
+    background: #175B99
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+
+</style>
+
+
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row m-auto">
+        <div class=" border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">  
+  <img class="rounded-circle" src="http://localhost:4000/uploaded_images/{{pic}}" id="output" width="200" />{{info.username}}</span><span class="text-black-50">{{info.email}}</span>
+  <span>
+      
+      <form action="/users/setting" method="post"class="mt-4" enctype="multipart/form-data">
+          <input type="file" class="form-control" id="customFile" name="photo" required/> <br>
+          <input  class="btn btn-primary profile-button" type="submit" value="Save"/>
+      </form>
+      
+  </span>
+  </div>
+        </div>
+        <div class=" border-right">
+            <div class="p-3 py-5">
+            <h4 class="text-center">Profile Settings</h4>
+
+                <form method="post" action="/users/setting2" >
+                        <div class="col-md-12 w-50 m-auto mb-4">
+                        <label class="labels fs-6 " style="margin-bottom:10px ;">Name</label>
+                            <input class="form-control" name="name" placeholder="{{username}}"  required/>
+                        </div>
+                        <div class="col-md-12 w-50 m-auto mb-4">
+                        <label class="labels fs-6 "style="margin-bottom:10px ;">Phone Number</label>
+
+                            <input type="text" class="form-control" name="phone" placeholder="{{phone}}" value="" required/>
+                        </div>
+                        <div class="col-md-12 w-50 m-auto mb-4">
+                        <label class="labels fs-6 "style="margin-bottom:10px ;">New Password</label>
+
+                            <input type="password" name="password" class="form-control" placeholder="Enter The New Password"  required/>
+                        </div>
+                        <div class="col-md-12 w-50 m-auto mb-4 text-center">
+                                <button
+                                type="submit"
+                                class="btn btn-primary profile-button"
+                                >Save Changes
+                                </button>
+                        </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
